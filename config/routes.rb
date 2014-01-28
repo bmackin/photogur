@@ -7,6 +7,10 @@ Photogur::Application.routes.draw do
   patch 'ppictures/:id' => "pictures#update"
 
   get 'pictures/:id' => 'pictures#show'
+
+  delete 'pictures/:id' => 'pictures#destroy', as: "picture"
+
+  root :to => "pictures#index"
 end
 
 
