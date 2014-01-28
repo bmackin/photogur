@@ -1,4 +1,6 @@
 <h1>Add a picture</h1>
+<%= link_to "Back to Pictures", pictures_url %>
+
 <%= form_for @picture do |f| %>
 	<p>
 		<%= f.label "artist" %><br>
@@ -10,7 +12,7 @@
 	</p>
 		<p>
 		<%= f.label "URL" %><br>
-		<%= f.text_field "URL" %>
+    <%= f.text_field "url" %>
 	</p>
 	<p>
 		<%= f.submit "Save" %>
