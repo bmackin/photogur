@@ -1,8 +1,20 @@
 <h1>Pictures</h1>
 <%= link_to "New Picture", "/pictures/new" %>
 
-<% @pictures.each do |picture| %>
-	<p><%= picture[:title] %>, <%= picture[:artist] %></p>
-	<%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %>
+<h2>Most Recent Pictures</h2>
+	<ul>
+		<%- @most_recent_pictures.each do |picture| %>
+		<%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %><br>
+		<% end %>
+	</ul>
+<h2>Older Pictures</h2>
+		<ul>
+			<% @old_pictures.each do |picture| %>
+			<li><%= picture.title %></li>
+			<% end %>
+		</ul>
+	<h2>Picture Archive</h2>
+	<%- @pictures.each do |picture| %>
+  <p><%= picture[:title] %>, <%= picture[:artist] %></p>
+  <%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %>
 <% end %>
-

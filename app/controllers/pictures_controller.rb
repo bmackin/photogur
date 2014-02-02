@@ -2,11 +2,17 @@ class PicturesController < ApplicationController
 	
 	def index
 		@pictures = Picture.all
+		@most_recent_pictures = Picture.most_recent_five
+		@old_pictures = Picture.created_before(2.days.ago)
 	end
 
   def show
     @picture = Picture.find(params[:id])
   end
+
+  def more
+		@picture = Picture.all
+	end
 
 	def new
 		@picture = Picture.new
@@ -15,7 +21,7 @@ class PicturesController < ApplicationController
 	def create
 		@picture = Picture.new(picture_params)
 		if @picture.save
-			redirect_to_pictures_url
+			redirect_to pictures_url
 		else
 				render :new
 			end
@@ -37,7 +43,7 @@ class PicturesController < ApplicationController
 	def destroy
 		@picture = Picture.find(params[:id])
 		@picture.destroy
-		redirect_to redirect_to_pictures_url
+		redirect_to pictures_url
 	end
 
 	private
